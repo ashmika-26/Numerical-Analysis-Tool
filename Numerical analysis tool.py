@@ -381,8 +381,12 @@ def Matrix(m):
         C = int(input("Enter the number of columns: "))
         print("Enter the entries in a single line row wise (separated by space): ")
         entries = list(map(float, input().split()))
-        m = np.array(entries).reshape(R, C)
-        return m
+        try:
+            m = np.array(entries).reshape(R, C)
+            return m
+        except ValueError:
+            print("You probably didn't fill in correct values for you matrix, please try again!")
+            main()
 
 def GaussE(a, b):
     n = len(b)
